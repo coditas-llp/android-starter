@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Common -->
+    <string name="app_name">Android Starter</string>
+    <string name="txt_something_went_wrong">Something went wrong</string>
+
+    <!-- Login Screen -->
+    <string name="txt_welcome">Welcome !</string>
+    <string name="txt_log_in">Log In</string>
+    <string name="txt_email_address">Email Address</string>
+    <string name="txt_enter_password">Enter Password</string>
+    <string name="txt_field_cannot_be_empty">Email or Password fields cannot be empty</string>
+
+    <!-- Dashboard Screen -->
+    <string name="txt_welcome_to_dashboard">Welcome to Dashboard</string>
+    <string name="txt_log_out">Log Out</string>
+    <string name="txt_sign_out_from_app">Sign Out? </string>
+    <string name="txt_sign_out_description">You will be logged out of the app</string>
+    <string name="txt_cancel">Cancel</string>
+
+</resources>
