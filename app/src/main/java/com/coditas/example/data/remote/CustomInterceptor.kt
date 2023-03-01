@@ -27,9 +27,7 @@ class CustomInterceptor @Inject constructor(
         private const val AUTHORIZATION = "Authorization"
         const val UNKNOWN_ERROR_CODE = 1
         const val NETWORK_ERROR_CODE = 2
-        private const val ERROR_BODY = "{\n" +
-                "  \"errorMessage\": \"No internet connection\"\n" +
-                "}"
+        private const val ERROR_BODY = "Something went wrong"
         private const val JSON = "application/json"
 
     }

@@ -1,7 +1,10 @@
 package com.coditas.example.utils
 
 object AppConstants {
-    const val BASE_URL = "http://192.168.102.50:8080"
+
+    //TODO: Add your base URL here
+    const val BASE_URL = ""
+
     const val PREF_TOKEN_FILE = "PREF_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"
     const val USER_ID = "USER_ID"

@@ -109,7 +109,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:visibility="@{viewModel._isLoading ? View.GONE : View.VISIBLE}"
+                android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
                 android:onClick="@{()->fragment.onClickLogin()}"
                 android:paddingStart="50dp"
                 android:paddingTop="@dimen/dp_10"
@@ -132,7 +132,7 @@
                 android:indeterminate="true"
                 android:indeterminateTint="@color/black"
                 android:indeterminateTintMode="src_atop"
-                android:visibility="@{viewModel._isLoading ? View.VISIBLE : View.GONE}" />
+                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
