@@ -20,14 +20,14 @@ class LoginViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : AndroidViewModel(application){
 
-    private val isLoading by lazy {
+    private val _isLoading by lazy {
         MutableLiveData<Boolean>()
     }
 
-    val _isLoading:LiveData<Boolean> = isLoading
+    val isLoading:LiveData<Boolean> = _isLoading
 
     fun showProgressbar(boolean: Boolean){
-        isLoading.postValue(boolean)
+        _isLoading.postValue(boolean)
     }
 
     fun loginUser(user: User): LiveData<NetworkResult<GenericResponse<User>>> {
