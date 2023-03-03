@@ -1,7 +1,6 @@
 package com.coditas.example.repository
 
 import com.coditas.example.data.dto.GenericResponse
-import com.coditas.example.data.dto.User
 import com.coditas.example.data.remote.APIService
 import com.coditas.example.utils.AppConstants.ERROR_MESSAGE
 import okhttp3.ResponseBody
@@ -11,11 +10,11 @@ import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val apiService: APIService) {
 
-    suspend fun loginUser(user: User): Response<GenericResponse<User>> {
+    suspend fun loginUser(user: Any): Response<GenericResponse<Any>> {
         return apiService.loginUser(user)
     }
 
-    suspend fun getUserInfo(userId: Int) : Response<GenericResponse<User>>{
+    suspend fun getUserInfo(userId: Any) : Response<GenericResponse<Any>>{
         return apiService.getUserInfo(userId)
     }
 

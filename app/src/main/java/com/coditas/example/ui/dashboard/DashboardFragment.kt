@@ -42,19 +42,9 @@ class DashboardFragment : Fragment() {
         mDashboardViewModel.getUserInfo(AccessTokenSharedPreference(requireContext()).getUserId())
             .observe(viewLifecycleOwner) { response ->
                 when (response) {
-                    is NetworkResult.Success -> {
-                        val userId = response.data?.data?.userId
-                        val userName = response.data?.data?.name
-                        val userEmail = response.data?.data?.email
-                        Logger.debug("Response Login -> userName = $userName, userId = $userId, email = $userEmail")
-                    }
-                    is NetworkResult.Loading -> {
-
-                    }
-                    is NetworkResult.Error -> {
-                        Toast.makeText(requireContext(), response.message, Toast.LENGTH_LONG).show()
-                        logout()
-                    }
+                    is NetworkResult.Success -> {}
+                    is NetworkResult.Loading -> {}
+                    is NetworkResult.Error -> {}
                 }
             }
     }

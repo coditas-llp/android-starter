@@ -1,6 +1,7 @@
 package com.coditas.example.utils
 
 object AppConstants {
+
     //TODO: Add your base URL here
     const val BASE_URL = ""
 

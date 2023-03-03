@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.coditas.example.R
 import com.coditas.example.data.dto.GenericResponse
-import com.coditas.example.data.dto.User
 import com.coditas.example.repository.UserRepository
 import com.coditas.resumebuilder.app.data.remote.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,8 +29,8 @@ class LoginViewModel @Inject constructor(
         _isLoading.postValue(boolean)
     }
 
-    fun loginUser(user: User): LiveData<NetworkResult<GenericResponse<User>>> {
-        return MutableLiveData<NetworkResult<GenericResponse<User>>>().apply {
+    fun loginUser(user: Any): LiveData<NetworkResult<GenericResponse<Any>>> {
+        return MutableLiveData<NetworkResult<GenericResponse<Any>>>().apply {
             postValue(NetworkResult.Loading())
             viewModelScope.launch {
                 val response = userRepository.loginUser(user)
