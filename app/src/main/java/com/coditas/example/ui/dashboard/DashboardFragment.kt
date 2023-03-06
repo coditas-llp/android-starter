@@ -76,16 +76,16 @@ class DashboardFragment : Fragment() {
     fun onClickLogInfo() {
         mBinding?.edLogMessage?.text?.let {toastMessage ->
             Logger.logInfo(toastMessage.toString())
-        }.run {
-            showToast(resources.getString(R.string.txt_please_enter_log_message))
+        }.also {
+            showToast(resources.getString(R.string.txt_please_check_log_message))
         }
     }
 
     fun onClickLogDebug(){
-        mBinding?.edLogMessage?.text?.let {toastMessage ->
+        mBinding?.edLogMessage?.text?.let { toastMessage ->
             Logger.logDebug(toastMessage.toString())
-        }.run {
-            showToast(resources.getString(R.string.txt_please_enter_log_message))
+        }.also {
+            showToast(resources.getString(R.string.txt_please_check_log_message))
         }
     }
 

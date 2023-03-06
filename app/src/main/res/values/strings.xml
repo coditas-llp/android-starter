@@ -28,5 +28,6 @@
     <string name="txt_enter_toast_message">Enter Toast Message</string>
     <string name="txt_please_enter_toast_message">Please enter Toast Message</string>
     <string name="txt_please_enter_log_message">Please enter Log Message</string>
+    <string name="txt_please_check_log_message">Please check logs on your IDE (Android Studio)</string>
 
 </resources>

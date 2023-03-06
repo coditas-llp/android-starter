@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginHorizontal="@dimen/dp_12"
                 android:background="@color/off_white"
                 android:elevation="@dimen/dp_8"
@@ -81,6 +82,7 @@
                     android:id="@+id/tvCheckInternet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/royal_blue"
                     android:text="@string/txt_check_internet"
                     android:textSize="@dimen/sp_16"
                     />
@@ -138,6 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
+                    android:layout_margin="@dimen/dp_12"
                     android:textColorHint="@color/royal_blue"
                     android:hint="@string/txt_enter_toast_message" />
 
