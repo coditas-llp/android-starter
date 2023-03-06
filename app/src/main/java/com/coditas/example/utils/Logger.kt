@@ -1,27 +1,38 @@
 package com.coditas.example.utils
 
 import android.util.Log
+import com.coditas.example.BuildConfig
 
 object Logger {
-    private const val TAG = "TAG"
 
-    fun debug(message: String){
-        Log.d(TAG,message)
+    @JvmStatic
+    fun <T : Any> T.logError(logMessage: String) {
+        if (BuildConfig.DEBUG)
+            Log.e(this.javaClass.simpleName, logMessage)
     }
 
-    fun verbose(message: String){
-        Log.v(TAG,message)
+    @JvmStatic
+    fun <T : Any> T.logVerbose(logMessage: String) {
+        if (BuildConfig.DEBUG)
+            Log.v(this.javaClass.simpleName, logMessage)
     }
 
-    fun error(message: String){
-        Log.e(TAG,message)
+    @JvmStatic
+    fun <T : Any> T.logDebug(logMessage: String) {
+        if (BuildConfig.DEBUG)
+            Log.d(this.javaClass.simpleName, logMessage)
     }
 
-    fun info(message: String){
-        Log.i(TAG,message)
+    @JvmStatic
+    fun <T : Any> T.logWarn(logMessage: String) {
+        if (BuildConfig.DEBUG)
+            Log.w(this.javaClass.simpleName, logMessage)
     }
 
-    fun warn(message: String){
-        Log.w(TAG,message)
+    @JvmStatic
+    fun <T : Any> T.logInfo(logMessage: String) {
+        if (BuildConfig.DEBUG)
+            Log.i(this.javaClass.simpleName, logMessage)
     }
+
 }

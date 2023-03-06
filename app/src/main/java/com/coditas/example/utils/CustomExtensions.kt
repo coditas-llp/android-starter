@@ -1,9 +1,11 @@
 package com.coditas.example.utils
 
+import android.content.Context
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 
 
 fun AppCompatActivity.showToast(string: String) {
@@ -18,9 +20,9 @@ fun Fragment.showToast(string: String) {
     }
 }
 
-fun AppCompatActivity.showSnack(string: String) {
+fun AppCompatActivity.showSnack(view: View ,string: String) {
     runOnUiThread {
-        Toast.makeText(this, string, Toast.LENGTH_SHORT).show()
+        Snackbar.make(view, string, Snackbar.LENGTH_SHORT).show()
     }
 }
 

@@ -26,10 +26,8 @@ class DashboardViewModel @Inject constructor(
                 val response = userRepository.getUserInfo(userId)
                 if (response.isSuccessful) {
                     postValue(NetworkResult.Success(response.body()))
-                } else if (!response.isSuccessful) {
-                    postValue(NetworkResult.Error(userRepository.getError(response.errorBody())))
                 } else {
-                    postValue(NetworkResult.Error(getApplication<Application>().getString(R.string.txt_something_went_wrong)))
+                    postValue(NetworkResult.Error(userRepository.getError(response.errorBody())))
                 }
             }
         }

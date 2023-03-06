@@ -19,16 +19,6 @@ class LoginViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : AndroidViewModel(application){
 
-    private val _isLoading by lazy {
-        MutableLiveData<Boolean>()
-    }
-
-    val isLoading:LiveData<Boolean> = _isLoading
-
-    fun showProgressbar(boolean: Boolean){
-        _isLoading.postValue(boolean)
-    }
-
     fun loginUser(user: Any): LiveData<NetworkResult<GenericResponse<Any>>> {
         return MutableLiveData<NetworkResult<GenericResponse<Any>>>().apply {
             postValue(NetworkResult.Loading())
@@ -36,10 +26,8 @@ class LoginViewModel @Inject constructor(
                 val response = userRepository.loginUser(user)
                 if (response.isSuccessful) {
                     postValue(NetworkResult.Success(response.body()))
-                } else if (!response.isSuccessful) {
-                    postValue(NetworkResult.Error(userRepository.getError(response.errorBody())))
                 } else {
-                    postValue(NetworkResult.Error(getApplication<Application>().getString(R.string.txt_something_went_wrong)))
+                    postValue(NetworkResult.Error(userRepository.getError(response.errorBody())))
                 }
             }
         }

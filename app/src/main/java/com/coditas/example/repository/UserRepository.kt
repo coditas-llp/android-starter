@@ -18,6 +18,14 @@ class UserRepository @Inject constructor(private val apiService: APIService) {
         return apiService.getUserInfo(userId)
     }
 
+    suspend fun updateUserInfo(userId: Any) : Response<GenericResponse<Any>>{
+        return apiService.updateUserInfo(userId)
+    }
+
+    suspend fun deleteUser(userId: Any) : Response<GenericResponse<Any>>{
+        return apiService.deleteUser(userId)
+    }
+
     fun getError(errorResponse: ResponseBody?): String? {
         val errorObj = errorResponse?.charStream()?.readText()?.let { JSONObject(it) }
         return errorObj?.getString(ERROR_MESSAGE)
