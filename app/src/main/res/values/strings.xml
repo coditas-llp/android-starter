@@ -23,6 +23,8 @@
     <string name="txt_internet_connection_is_available">Internet connection is available</string>
     <string name="txt_internet_connection_is_unavailable">Internet connection is unavailable</string>
     <string name="txt_show_toast">Show Toast</string>
+    <string name="txt_log_info">Log Info</string>
+    <string name="txt_log_debug">Log Debug</string>
     <string name="txt_enter_toast_message">Enter Toast Message</string>
     <string name="txt_please_enter_toast_message">Please enter Toast Message</string>
     <string name="txt_please_enter_log_message">Please enter Log Message</string>

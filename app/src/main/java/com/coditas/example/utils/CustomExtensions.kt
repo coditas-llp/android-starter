@@ -26,9 +26,10 @@ fun AppCompatActivity.showSnack(view: View ,string: String) {
     }
 }
 
-fun Fragment.showSnack(view: View ,string: String) {
+fun Fragment.showSnack(view: View, string: String) {
     activity?.runOnUiThread {
-        Snackbar.make(view, string, Snackbar.LENGTH_SHORT).setBackgroundTint(Color.DKGRAY).show()
+        Snackbar.make(view, string, Snackbar.LENGTH_SHORT).setBackgroundTint(Color.DKGRAY)
+            .setTextColor(Color.WHITE).show()
     }
 }
 

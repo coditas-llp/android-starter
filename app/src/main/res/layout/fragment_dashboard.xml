@@ -152,8 +152,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_btn_login_background"
                     android:padding="@dimen/dp_10"
-                    android:text="@string/txt_show_toast"
-                    android:onClick="@{()-> fragment.onClickShowToast()}"
+                    android:text="@string/txt_log_info"
+                    android:onClick="@{()-> fragment.onClickLogInfo()}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sp_16"
                     android:layout_margin="@dimen/dp_12"/>
@@ -164,8 +164,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_btn_login_background"
                         android:padding="@dimen/dp_10"
-                        android:text="@string/txt_show_toast"
-                        android:onClick="@{()-> fragment.onClickShowToast()}"
+                        android:text="@string/txt_log_debug"
+                        android:onClick="@{()-> fragment.onClickLogDebug()}"
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_16"
                         android:layout_margin="@dimen/dp_12"/>
