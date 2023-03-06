@@ -85,6 +85,6 @@ dependencies {
     // Encrypted shared preference
     implementation 'androidx.security:security-crypto:1.0.0'
 
-    implementation 'androidx.core:core-splashscreen:1.1.0-alpha01'
+    implementation 'androidx.core:core-splashscreen:1.0.0'
 
 }

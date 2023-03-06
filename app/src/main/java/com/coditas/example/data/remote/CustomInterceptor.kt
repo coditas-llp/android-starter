@@ -5,6 +5,7 @@ import com.coditas.example.data.local.AccessTokenSharedPreference
 import com.coditas.example.utils.AppConstants
 import com.coditas.example.utils.InternetConnection
 import com.coditas.example.utils.Logger
+import com.coditas.example.utils.Logger.logDebug
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -47,7 +48,7 @@ class CustomInterceptor @Inject constructor(
         } else {
             getLocalErrorResponse(request, AppConstants.NO_INTERNET, NETWORK_ERROR_CODE)
         }
-        Logger.debug(apiResponse.code.toString())
+        Logger.logDebug(apiResponse.code.toString())
         return apiResponse
     }
 

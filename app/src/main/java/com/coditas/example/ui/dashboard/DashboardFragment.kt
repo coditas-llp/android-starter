@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.coditas.example.R
 import com.coditas.example.data.local.AccessTokenSharedPreference
 import com.coditas.example.databinding.FragmentDashboardBinding
+import com.coditas.example.utils.InternetConnection
 import com.coditas.example.utils.Logger
+import com.coditas.example.utils.Logger.logDebug
+import com.coditas.example.utils.Logger.logInfo
+import com.coditas.example.utils.showToast
 import com.coditas.resumebuilder.app.data.remote.NetworkResult
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,20 +36,57 @@ class DashboardFragment : Fragment() {
         }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        getUserData()
-    }
-
+    //TODO: Call your api using generic response to handle different states of api calls.
     private fun getUserData() {
         mDashboardViewModel.getUserInfo(AccessTokenSharedPreference(requireContext()).getUserId())
             .observe(viewLifecycleOwner) { response ->
                 when (response) {
-                    is NetworkResult.Success -> {}
-                    is NetworkResult.Loading -> {}
-                    is NetworkResult.Error -> {}
+                    is NetworkResult.Success -> {
+                        //TODO: Handle success response here
+                    }
+                    is NetworkResult.Loading -> {
+                        //TODO: Handle loading response here
+                    }
+                    is NetworkResult.Error -> {
+                        //TODO: Handle error response here
+                    }
                 }
             }
+    }
+
+    fun onClickCheckInternet(){
+        showToast(if (InternetConnection().checkConnection(requireContext())){
+            resources.getString(R.string.txt_internet_connection_is_available)
+        }else{
+            resources.getString(R.string.txt_internet_connection_is_unavailable)
+        })
+    }
+
+    fun onClickShowToast() {
+        val toastMessage = mBinding?.edToastMessage?.text
+        showToast(
+            (if (toastMessage.isNullOrEmpty().not()) {
+                toastMessage.toString()
+            } else {
+                resources.getString(R.string.txt_please_enter_toast_message)
+            })
+        )
+    }
+
+    fun onClickLogInfo() {
+        mBinding?.edLogMessage?.text?.let {toastMessage ->
+            Logger.logInfo(toastMessage.toString())
+        }.run {
+            showToast(resources.getString(R.string.txt_please_enter_log_message))
+        }
+    }
+
+    fun onClickLogDebug(){
+        mBinding?.edLogMessage?.text?.let {toastMessage ->
+            Logger.logDebug(toastMessage.toString())
+        }.run {
+            showToast(resources.getString(R.string.txt_please_enter_log_message))
+        }
     }
 
     fun onClickLogout() {
@@ -63,7 +103,6 @@ class DashboardFragment : Fragment() {
     }
 
     private fun logout(){
-        AccessTokenSharedPreference(requireContext()).deleteToken()
         findNavController().navigate(DashboardFragmentDirections.actionDashboardScreenToLoginScreen())
     }
 

@@ -10,12 +10,21 @@
     <string name="txt_email_address">Email Address</string>
     <string name="txt_enter_password">Enter Password</string>
     <string name="txt_field_cannot_be_empty">Email or Password fields cannot be empty</string>
+    <string name="txt_long_press_login_button">Long press login button</string>
 
     <!-- Dashboard Screen -->
     <string name="txt_welcome_to_dashboard">Welcome to Dashboard</string>
+    <string name="txt_please_try_common_utils_here">Please feel free to try our common utils</string>
     <string name="txt_log_out">Log Out</string>
     <string name="txt_sign_out_from_app">Sign Out? </string>
     <string name="txt_sign_out_description">You will be logged out of the app</string>
     <string name="txt_cancel">Cancel</string>
+    <string name="txt_check_internet">Check internet</string>
+    <string name="txt_internet_connection_is_available">Internet connection is available</string>
+    <string name="txt_internet_connection_is_unavailable">Internet connection is unavailable</string>
+    <string name="txt_show_toast">Show Toast</string>
+    <string name="txt_enter_toast_message">Enter Toast Message</string>
+    <string name="txt_please_enter_toast_message">Please enter Toast Message</string>
+    <string name="txt_please_enter_log_message">Please enter Log Message</string>
 
 </resources>
