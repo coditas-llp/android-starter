@@ -109,8 +109,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
                 android:onClick="@{()->fragment.onClickLogin()}"
+                android:onLongClick="@{()->fragment.onLongClickLogin()}"
                 android:paddingStart="50dp"
                 android:paddingTop="@dimen/dp_10"
                 android:paddingEnd="50dp"
@@ -118,21 +118,6 @@
                 android:text="@string/txt_log_in"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_16" />
-
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/progressbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/royal_blue"
-                app:layout_constraintTop_toTopOf="@id/btnLogin"
-                app:layout_constraintEnd_toEndOf="@id/btnLogin"
-                app:layout_constraintStart_toStartOf="@id/btnLogin"
-                app:layout_constraintBottom_toBottomOf="@id/btnLogin"
-                android:layout_marginVertical="@dimen/dp_16"
-                android:indeterminate="true"
-                android:indeterminateTint="@color/black"
-                android:indeterminateTintMode="src_atop"
-                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

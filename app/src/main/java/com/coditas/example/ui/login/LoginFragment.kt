@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.coditas.example.R
-import com.coditas.example.data.dto.User
 import com.coditas.example.data.local.AccessTokenSharedPreference
 import com.coditas.example.databinding.FragmentLoginBinding
+import com.coditas.example.utils.showSnack
 import com.coditas.example.utils.showToast
-import com.coditas.resumebuilder.app.data.remote.NetworkResult
+import com.coditas.example.data.remote.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,32 +37,33 @@ class LoginFragment : Fragment() {
             val userEmail = edEmail.text?.toString() ?: ""
             val userPassword = edPassword.text?.toString() ?: ""
             if (validateLoginCredentials(email = userEmail, password = userPassword)) {
-                mLoginViewModel.loginUser(
-                    User(
-                        email = userEmail,
-                        password = userPassword
-                    )
-                ).observe(viewLifecycleOwner) { response ->
-                    when (response) {
-                        is NetworkResult.Success -> {
-                            mLoginViewModel.showProgressbar(boolean = false)
-                            val token = response.data?.data?.accessToken
-                            val userId = response.data?.data?.userId
-                            AccessTokenSharedPreference(requireContext()).saveToken(token)
-                            AccessTokenSharedPreference(requireContext()).saveUserId(userId)
-                            findNavController().navigate(LoginFragmentDirections.actionLoginScreenToDashboardScreen())
-                        }
-                        is NetworkResult.Loading -> {
-                            mLoginViewModel.showProgressbar(boolean = true)
-                        }
-                        is NetworkResult.Error -> {
-                            mLoginViewModel.showProgressbar(boolean = false)
-                            showToast(response.message.toString())
-                        }
-                    }
+                //TODO: Call your api here, for time being perform long press on 'Login' button to continue navigating screens
+                mBinding?.btnLogin?.rootView?.let { view ->
+                    showSnack(view,resources.getString(R.string.txt_long_press_login_button))
                 }
             }
         }
+    }
+
+    fun login(){
+        mLoginViewModel.loginUser(AccessTokenSharedPreference(requireContext()).getUserId()).observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    //TODO: Handle success response here
+                }
+                is NetworkResult.Loading -> {
+                    //TODO: Handle loading response here
+                }
+                is NetworkResult.Error -> {
+                    //TODO: Handle error response here
+                }
+            }
+        }
+    }
+
+    fun onLongClickLogin():Boolean{
+        findNavController().navigate(LoginFragmentDirections.actionLoginScreenToDashboardScreen())
+        return false
     }
 
     private fun validateLoginCredentials(email: String, password: String): Boolean {

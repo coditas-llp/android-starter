@@ -3,7 +3,7 @@ package com.coditas.example.utils
 object AppConstants {
 
     //TODO: Add your base URL here
-    const val BASE_URL = ""
+    const val BASE_URL = "https://www.fakeapi.com"
 
     const val PREF_TOKEN_FILE = "PREF_TOKEN_FILE"
     const val USER_TOKEN = "USER_TOKEN"

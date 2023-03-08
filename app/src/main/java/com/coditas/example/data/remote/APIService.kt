@@ -7,10 +7,15 @@ import retrofit2.http.*
 
 interface APIService {
 
-    //Login API
     @POST("/auth/client/login")
-    suspend fun loginUser(@Body user: User) : Response<GenericResponse<User>>
+    suspend fun loginUser(@Body user: Any) : Response<GenericResponse<Any>>
 
     @GET("/user/{userId}")
-    suspend fun getUserInfo(@Path("userId") userId: Int) : Response<GenericResponse<User>>
+    suspend fun getUserInfo(@Path("userId") userId: Any) : Response<GenericResponse<Any>>
+
+    @PUT("/users/update/{userId}")
+    suspend fun updateUserInfo(@Path("userId") userId: Any): Response<GenericResponse<Any>>
+
+    @DELETE("/users/update/{userId}")
+    suspend fun deleteUser(@Path("userId") userId: Any): Response<GenericResponse<Any>>
 }

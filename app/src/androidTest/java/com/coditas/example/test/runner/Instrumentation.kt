@@ -3,7 +3,8 @@ package com.coditas.example.test.runner
 import android.os.Bundle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import com.coditas.example.utils.Logger.info
+import com.coditas.example.utils.Logger
+import com.coditas.example.utils.Logger.logInfo
 import io.cucumber.android.runner.CucumberAndroidJUnitRunner
 import io.cucumber.junit.CucumberOptions
 import org.junit.runner.RunWith
@@ -32,7 +33,7 @@ class Instrumentation : CucumberAndroidJUnitRunner() {
 			ARG_PLUGIN, getPluginConfigurationString()
 		)
 		File(getAbsoluteFilesPath()).mkdirs()
-		info("UT onCreate Instrumentation")
+		Logger.logInfo("UT onCreate Instrumentation")
 		super.onCreate(arguments)
 	}
 

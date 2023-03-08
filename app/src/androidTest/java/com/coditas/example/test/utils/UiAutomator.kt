@@ -5,7 +5,8 @@ import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject
 import androidx.test.uiautomator.UiSelector
 import com.coditas.example.test.utils.conditionWatcher.*
-import com.coditas.example.utils.Logger.debug
+import com.coditas.example.utils.Logger
+import com.coditas.example.utils.Logger.logInfo
 
 
 object UiAutomator {
@@ -143,7 +144,7 @@ object UiAutomator {
             UiSelector().resourceId(RESOURCE_ID + resourceId)
                 .className(CLASS_CHECKBOX)
         )
-        if (checkBoxViewId.exists() && checkBoxViewId.isChecked) debug("$resourceId is checked")
+        if (checkBoxViewId.exists() && checkBoxViewId.isChecked) Logger.logInfo("$resourceId is checked")
         else throw IllegalArgumentException("No $resourceId checkbox found")
     }
 

@@ -11,12 +11,20 @@ import javax.inject.Inject
 
 class UserRepository @Inject constructor(private val apiService: APIService) {
 
-    suspend fun loginUser(user: User): Response<GenericResponse<User>> {
+    suspend fun loginUser(user: Any): Response<GenericResponse<Any>> {
         return apiService.loginUser(user)
     }
 
-    suspend fun getUserInfo(userId: Int) : Response<GenericResponse<User>>{
+    suspend fun getUserInfo(userId: Any) : Response<GenericResponse<Any>>{
         return apiService.getUserInfo(userId)
+    }
+
+    suspend fun updateUserInfo(userId: Any) : Response<GenericResponse<Any>>{
+        return apiService.updateUserInfo(userId)
+    }
+
+    suspend fun deleteUser(userId: Any) : Response<GenericResponse<Any>>{
+        return apiService.deleteUser(userId)
     }
 
     fun getError(errorResponse: ResponseBody?): String? {

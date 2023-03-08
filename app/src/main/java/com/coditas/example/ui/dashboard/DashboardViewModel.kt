@@ -5,11 +5,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.coditas.example.R
 import com.coditas.example.data.dto.GenericResponse
-import com.coditas.example.data.dto.User
 import com.coditas.example.repository.UserRepository
-import com.coditas.resumebuilder.app.data.remote.NetworkResult
+import com.coditas.example.data.remote.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,17 +18,15 @@ class DashboardViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : AndroidViewModel(application) {
 
-    fun getUserInfo(userId: Int): LiveData<NetworkResult<GenericResponse<User>>> {
-        return MutableLiveData<NetworkResult<GenericResponse<User>>>().apply {
+    fun getUserInfo(userId: Any): LiveData<NetworkResult<GenericResponse<Any>>> {
+        return MutableLiveData<NetworkResult<GenericResponse<Any>>>().apply {
             postValue(NetworkResult.Loading())
             viewModelScope.launch {
                 val response = userRepository.getUserInfo(userId)
                 if (response.isSuccessful) {
                     postValue(NetworkResult.Success(response.body()))
-                } else if (!response.isSuccessful) {
-                    postValue(NetworkResult.Error(userRepository.getError(response.errorBody())))
                 } else {
-                    postValue(NetworkResult.Error(getApplication<Application>().getString(R.string.txt_something_went_wrong)))
+                    postValue(NetworkResult.Error(userRepository.getError(response.errorBody())))
                 }
             }
         }

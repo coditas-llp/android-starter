@@ -3,7 +3,8 @@ package com.coditas.example.test.utils.conditionWatcher
 import androidx.test.uiautomator.UiObject
 import androidx.test.uiautomator.UiSelector
 import com.coditas.example.test.utils.UiAutomator
-import com.coditas.example.utils.Logger.debug
+import com.coditas.example.utils.Logger
+import com.coditas.example.utils.Logger.logError
 
 
 /**
@@ -45,7 +46,7 @@ class WaitForMultiLineText(private val inputString: String) : Instruction() {
 
             }
         } catch (e: Exception) {
-            debug("Multi Line Exception :- $e")
+            Logger.logError("Multi Line Exception :- $e")
             return false
         }
     }

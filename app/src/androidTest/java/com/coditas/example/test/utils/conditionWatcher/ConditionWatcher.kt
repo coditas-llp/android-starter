@@ -1,6 +1,8 @@
 package com.coditas.example.test.utils.conditionWatcher
 
-import com.coditas.example.utils.Logger.debug
+import com.coditas.example.utils.Logger
+import com.coditas.example.utils.Logger.logError
+import com.coditas.example.utils.Logger.logInfo
 import javax.inject.Singleton
 
 class ConditionWatcher {
@@ -68,7 +70,7 @@ class ConditionWatcher {
 					break
 				}
 			} while (status != CONDITION_MET)
-			if (status == TIMEOUT) debug(" Error View :- ${instruction.description}")
+			if (status == TIMEOUT) Logger.logError(" Error View :- ${instruction.description}")
 		}
 	}
 
