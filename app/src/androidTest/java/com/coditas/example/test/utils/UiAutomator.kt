@@ -1,5 +1,7 @@
 package com.coditas.example.test.utils
 
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject
@@ -13,6 +15,7 @@ object UiAutomator {
 
     private const val APP_NAME = "Android Starter"
     private const val CLASS_TEXTVIEW = "android.widget.TextView"
+    private const val CLASS_EDIT_TEXTVIEW = "android.widget.EditText"
     private const val RESOURCE_ID = "com.coditas.example:id/"
     private const val CLASS_BUTTON = "android.widget.Button"
     private const val CLASS_RADIO_BUTTON = "android.widget.RadioButton"
@@ -100,12 +103,24 @@ object UiAutomator {
         else throw IllegalArgumentException("No MatchingViewException: No views in hierarchy found matching: $inputString")
     }
 
-    fun onClickText(inputString: String) {
+    /**
+     * Enters given Text into editTextField.
+     * @param value is inputString we want to put into field.
+     * @param fieldName is name text of EditText [e.g. editText with hint 'Email Address']
+     */
+    fun enterTextInEditTextField(value: String, fieldName: String) {
         val textViewId: UiObject = device.findObject(
-            UiSelector().text(inputString).className(CLASS_TEXTVIEW)
+            UiSelector().text(fieldName).className(CLASS_EDIT_TEXTVIEW)
         )
-        if (textViewId.exists()) textViewId.click()
-        else throw IllegalArgumentException("No MatchingViewException: No views in hierarchy found matching: $inputString")
+        if (textViewId.exists()){
+            textViewId.run {
+                click()
+                text = fieldName
+                closeSoftKeyboard()
+            }
+        }
+
+        else throw IllegalArgumentException("No MatchingViewException: No views in hierarchy found matching: $fieldName")
     }
 
 

@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="fragment"
             type="com.coditas.example.ui.login.LoginFragment" />
@@ -10,7 +11,7 @@
             name="viewModel"
             type="com.coditas.example.ui.login.LoginViewModel" />
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
@@ -96,19 +97,15 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/sp_32">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_btn_login_background"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:onClick="@{()->fragment.onClickLogin()}"
                 android:onLongClick="@{()->fragment.onLongClickLogin()}"
                 android:paddingStart="50dp"
@@ -116,8 +113,13 @@
                 android:paddingEnd="50dp"
                 android:paddingBottom="@dimen/dp_10"
                 android:text="@string/txt_log_in"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/sp_16" />
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

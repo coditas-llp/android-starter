@@ -10,7 +10,7 @@
     <string name="txt_email_address">Email Address</string>
     <string name="txt_enter_password">Enter Password</string>
     <string name="txt_field_cannot_be_empty">Email or Password fields cannot be empty</string>
-    <string name="txt_long_press_login_button">Long press login button</string>
+    <string name="txt_long_press_login_button">Api calls are not integrated yet, Please perform long press on login button</string>
 
     <!-- Dashboard Screen -->
     <string name="txt_welcome_to_dashboard">Welcome to Dashboard</string>
