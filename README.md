@@ -259,3 +259,113 @@ implementation 'androidx.core:core-splashscreen:1.0.0'
 ```
 
 - Starting in Android 12, the SplashScreen API enables a new app launch animation for all apps when running on a device with Android 12 or higher. This includes an into-app motion at launch, a splash screen showing your app icon, and a transition to your app itself. A SplashScreen is a Window and therefore occludes an Activity.
+
+<br />
+
+---
+
+## **Android Automation using UiAutomator and Espresso using Behavior Driven Development (BDD) :-**
+
+### **Prerequisite :-**
+* Cucumber for Java (Android Studio Plugin)
+* Gherkin (Android Studio Plugin)
+
+ <br />
+
+ ---
+
+### **Code folder structure**
+
+```
+`-- src
+|       |-- androidTest
+|       |   |-- assets
+|       |   |   `-- features
+|       |   |       `-- login
+|       |   |           `-- login.feature
+|       |   `-- java
+|       |       `-- com
+|       |           `-- coditas
+|       |               `-- example
+|       |                   |-- ExampleInstrumentedTest.kt
+|       |                   `-- test
+|       |                       |-- runner
+|       |                       |   `-- Instrumentation.kt
+|       |                       |-- steps
+|       |                       |   `-- login
+|       |                       |       `-- LoginSteps.kt
+|       |                       `-- utils
+|       |                           |-- BDDStepFunctions.kt
+|       |                           |-- UiAutomator.kt
+|       |                           `-- conditionWatcher
+|       |                               |-- BaseAndroidTest.kt
+|       |                               |-- ConditionWatcher.kt
+|       |                               |-- Instruction.kt
+|       |                               |-- WaitForButtonToAppear.kt
+|       |                               |-- WaitForEditTextToAppear.kt
+|       |                               |-- WaitForLabelButtonToAppear.kt
+|       |                               |-- WaitForListToLoad.kt
+|       |                               |-- WaitForMultiLineText.kt
+|       |                               |-- WaitForRadioButtonToAppear.kt
+|       |                               |-- WaitForTextToAppear.kt
+|       |                               |-- WaitForTextViewToAppear.kt
+|       |                               |-- WaitForToggleButton.kt
+|       |                               `-- WaitForViewToAppear.kt
+```
+
+---
+
+<br />
+
+
+### **features/login :-**
+- `login.feature` :- Contains Test cases with Tags i.e. [@login].Add more pacakges/feature files in `androidTest/assets/features`
+
+### **runner/ :-**
+
+- `Instrumentation.kt` :- CucumberAndroidJUnitRunner class to run and deliver the output files like reports. Change tags and feature folder path in this file according to your preference. Configure `class Instrumentation` to run your automation.
+
+```
+@CucumberOptions(
+	features = ["features"],
+	dryRun = false,
+	glue = ["com.coditas.example.test.steps"],
+	monochrome = true,
+	tags = ["@login"]
+)
+```
+
+<br />
+
+### **steps/login**
+
+- `LoginSetps.kt` :- Contains step definition linking test cases to code.
+
+<br />
+
+### **utils/**
+
+1. `BDDStepFunctions.kt` :- Contains [espresso](https://developer.android.com/training/testing/espresso) based custom functions for automation.
+2. `UiAutomator.kt` :- Contains [UiAutomator](https://developer.android.com/training/testing/other-components/ui-automator) based custom functions for automation
+3. `conditionWatcher` :- Condition watcher are used to wait for a view for certain time before timing out.This was neccessary in espresso but with uiAutomator we don't need to use these functions as uiAutomator has inbuild function berforming similar actions.
+
+<br />
+
+### **Output File Path (In Device File Explorer):-**
+`/data/data/com.coditas.example/files/reports`
+
+- Files generated after every automation run :- <br />
+
+    1. cucumber.html
+    2. cucumber.json
+    3. cucumber.xml
+
+    <br />
+
+- Or extract .html file from `Run` concole after test run completed -> `Export Text Results...` button
+
+<br />
+
+### **Android Automation Run in action :-**
+
+<img src="screenshots/automation-login.gif" width="270" height="480"/>

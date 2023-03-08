@@ -1,6 +1,5 @@
 package com.coditas.example.test.utils
 
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
@@ -115,7 +114,7 @@ object UiAutomator {
         if (textViewId.exists()){
             textViewId.run {
                 click()
-                text = fieldName
+                text = value
                 closeSoftKeyboard()
             }
         }
