@@ -15,7 +15,7 @@ import com.coditas.example.utils.Logger
 import com.coditas.example.utils.Logger.logDebug
 import com.coditas.example.utils.Logger.logInfo
 import com.coditas.example.utils.showToast
-import com.coditas.resumebuilder.app.data.remote.NetworkResult
+import com.coditas.example.data.remote.NetworkResult
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 

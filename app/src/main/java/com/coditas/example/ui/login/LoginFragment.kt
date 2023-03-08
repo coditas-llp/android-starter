@@ -6,16 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.coditas.example.R
 import com.coditas.example.data.local.AccessTokenSharedPreference
 import com.coditas.example.databinding.FragmentLoginBinding
 import com.coditas.example.utils.showSnack
 import com.coditas.example.utils.showToast
-import com.coditas.resumebuilder.app.data.remote.NetworkResult
+import com.coditas.example.data.remote.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.coditas.resumebuilder.app.data.remote
+package com.coditas.example.data.remote
 
 sealed class NetworkResult<T>(
     val data: T? = null,
