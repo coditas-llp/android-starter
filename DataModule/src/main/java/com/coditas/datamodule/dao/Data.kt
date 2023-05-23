@@ -19,5 +19,5 @@ data class Data(
     @SerializedName("last_name")
     var lastName: String,
 
-    var suport:Support
+    var support:Support
 )

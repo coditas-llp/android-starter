@@ -1,5 +1,6 @@
 package com.coditas.android_starter.screens.screenOne
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -7,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -17,20 +19,21 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.coditas.android_starter.R
 import com.coditas.datamodule.network.NetworkResult
+import com.coditas.datamodule.utils.extensions.InternetConnection
 import com.coditas.uimodule.components.CoditasPrimaryButtonView
 
 @Composable
 fun ScreenOne(navController: NavHostController) {
     val screenOneViewModel: ScreenOneViewModel = hiltViewModel()
     val lifecycleOwner = rememberUpdatedState(LocalLifecycleOwner.current)
-    var argument1: String? = ""
+    val context = LocalContext.current
 
-    screenOneViewModel.fetchAllUsers()
     screenOneViewModel.response.observe(lifecycleOwner.value) {
         when (it) {
             is NetworkResult.Success -> {
                 //TODO: Add action on success response here
-                argument1 = it.data?.data?.get(0)?.firstName
+                val argument1 = it.data?.data?.get(0)?.firstName
+                navController.navigate("screenTwo/${argument1}")
             }
             is NetworkResult.Loading -> {
                 //TODO: Add action on loading response here
@@ -54,7 +57,13 @@ fun ScreenOne(navController: NavHostController) {
             Spacer(modifier = Modifier.height(16.dp))
             CoditasPrimaryButtonView(
                 buttonText = stringResource(id = R.string.screen_one_dc_button_text),
-                onClickListener = { navController.navigate("screenTwo/${argument1}") })
+                onClickListener = {
+                    if (InternetConnection.isInternetConnected(context = context)){
+                        screenOneViewModel.fetchAllUsers()
+                    } else {
+                        Toast.makeText(context, context.getText(R.string.check_internet_connectivity),Toast.LENGTH_SHORT).show()
+                    }
+                })
         }
     }
 }
