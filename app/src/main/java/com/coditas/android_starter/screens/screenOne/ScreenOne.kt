@@ -19,6 +19,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.coditas.android_starter.R
 import com.coditas.datamodule.network.NetworkResult
+import com.coditas.datamodule.utils.Logger
+import com.coditas.datamodule.utils.Logger.logDebug
 import com.coditas.datamodule.utils.extensions.isInternetConnected
 import com.coditas.uimodule.components.CoditasPrimaryButtonView
 
@@ -33,6 +35,7 @@ fun ScreenOne(navController: NavHostController) {
             is NetworkResult.Success -> {
                 //TODO: Add action on success response here
                 val argument1 = it.data?.data?.get(0)?.firstName
+                Logger.logDebug("Json response :- ${it.data?.data?.get(0)}")
                 navController.navigate("screenTwo/${argument1}")
             }
             is NetworkResult.Loading -> {
