@@ -19,7 +19,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.coditas.android_starter.R
 import com.coditas.datamodule.network.NetworkResult
-import com.coditas.datamodule.utils.extensions.InternetConnection
+import com.coditas.datamodule.utils.extensions.isInternetConnected
 import com.coditas.uimodule.components.CoditasPrimaryButtonView
 
 @Composable
@@ -58,7 +58,7 @@ fun ScreenOne(navController: NavHostController) {
             CoditasPrimaryButtonView(
                 buttonText = stringResource(id = R.string.screen_one_dc_button_text),
                 onClickListener = {
-                    if (InternetConnection.isInternetConnected(context = context)){
+                    if (context.isInternetConnected()){
                         screenOneViewModel.fetchAllUsers()
                     } else {
                         Toast.makeText(context, context.getText(R.string.check_internet_connectivity),Toast.LENGTH_SHORT).show()
