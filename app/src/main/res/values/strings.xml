@@ -3,6 +3,6 @@
 
     <string name="screen_one_dc_title">This is Screen One \n Please check logs to see demo api response</string>
     <string name="screen_one_dc_button_text">Navigate to Screen Two</string>
-    <string name="screen_two_dc_title">This is Screen One \n We get argument :-</string>
+    <string name="screen_two_dc_title">This is Screen Two \n We get argument :-</string>
     <string name="check_internet_connectivity">Please check your internet connectivity</string>
 </resources>
