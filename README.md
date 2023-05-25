@@ -60,4 +60,6 @@ To get started with the android-starter project, follow these steps:
 2. Open the project in Android Studio.
 3. Build and run the `app` module on an emulator or physical device with the required Android version.
 
-![Android Starter](./android-starter.gif)
+<div style="text-align: center;">
+  <img src="./android-starter.gif" alt="Android Starter" width="200px" />
+</div>
